@@ -1,0 +1,6 @@
+{
+  "name": "A'S Worldwide Services",
+  "description": "Connecting people, bridging businesses, and delivering opportunities. International university admissions, China product sourcing, quality inspections, global work visas, and professional translation services.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
