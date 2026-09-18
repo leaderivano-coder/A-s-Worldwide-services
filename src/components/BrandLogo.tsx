@@ -7,11 +7,12 @@ interface BrandLogoProps {
   showTagline?: boolean;
 }
 
-const USER_LOGO_URL = 'https://drive.google.com/file/d/1ZXJR8oeR9vryUVZRRS4SQR1xPqSbtszJ/view?usp=drive_link';
-https://drive.google.com/file/d/1ZXJR8oeR9vryUVZRRS4SQR1xPqSbtszJ/view?usp=drive_link
+const LOCAL_LOGO_URL = '/assets/brand_logo.png';
+const DRIVE_DIRECT_URL = 'https://lh3.googleusercontent.com/d/1ZXJR8oeR9vryUVZRRS4SQR1xPqSbtszJ';
+
 /**
  * High-fidelity representation of the official A'S WorldWide SERVICES emblem.
- * Uses the user-provided logo image link with graceful fallback to the vector emblem.
+ * Uses the user-provided logo image with graceful fallback to the vector emblem.
  */
 export const BrandLogo: React.FC<BrandLogoProps> = ({
   className = '',
@@ -19,17 +20,28 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   variant = 'full',
   showTagline = true,
 }) => {
+  const [imgSrc, setImgSrc] = useState<string>(LOCAL_LOGO_URL);
   const [imgError, setImgError] = useState(false);
+
+  const handleImageError = () => {
+    if (imgSrc === LOCAL_LOGO_URL) {
+      // Try direct Google Drive CDN stream
+      setImgSrc(DRIVE_DIRECT_URL);
+    } else {
+      // Fallback to high-res SVG crest
+      setImgError(true);
+    }
+  };
 
   if (variant === 'horizontal') {
     return (
       <div className={`flex items-center gap-3 ${className}`}>
         {!imgError ? (
           <img
-            src={USER_LOGO_URL}
+            src={imgSrc}
             alt="A'S Worldwide Services Logo"
             referrerPolicy="no-referrer"
-            onError={() => setImgError(true)}
+            onError={handleImageError}
             className="w-10 h-10 object-contain shrink-0 rounded-full bg-white shadow-xs p-0.5 border border-[#C59B4B]/40"
           />
         ) : (
@@ -84,10 +96,10 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
     <div className={`relative flex flex-col items-center justify-center select-none ${className}`} style={{ width: size, height: size }}>
       {!imgError ? (
         <img
-          src={USER_LOGO_URL}
+          src={imgSrc}
           alt="A'S Worldwide Services Official Logo"
           referrerPolicy="no-referrer"
-          onError={() => setImgError(true)}
+          onError={handleImageError}
           className="w-full h-full object-contain rounded-full shadow-md bg-white p-1 border-2 border-[#C59B4B]/60"
         />
       ) : (

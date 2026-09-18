@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../i18n/LanguageContext';
 import {
   PackageCheck,
   Ship,
@@ -122,17 +123,19 @@ export const GoodsShowcaseSection: React.FC<GoodsShowcaseSectionProps> = ({ onOp
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [selectedItem, setSelectedItem] = useState<GoodsItem | null>(null);
 
+  const { t } = useLanguage();
+
   const filteredItems =
     activeCategory === 'all'
       ? GOODS_ITEMS
       : GOODS_ITEMS.filter((item) => item.category === activeCategory);
 
   const categories = [
-    { id: 'all', label: 'All Operations' },
-    { id: 'wholesale', label: 'Wholesale & Consumer Goods' },
-    { id: 'inspection', label: 'Factory Inspections' },
-    { id: 'warehouse', label: 'Warehouse Staging' },
-    { id: 'shipping', label: 'Container Shipping' },
+    { id: 'all', label: t('goods.all') },
+    { id: 'wholesale', label: t('goods.wholesale') },
+    { id: 'inspection', label: t('goods.inspection') },
+    { id: 'warehouse', label: t('goods.warehouse') },
+    { id: 'shipping', label: t('goods.shipping') },
   ];
 
   return (
@@ -142,15 +145,15 @@ export const GoodsShowcaseSection: React.FC<GoodsShowcaseSectionProps> = ({ onOp
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#C59B4B]/40 text-xs font-bold text-[#0A2240] tracking-wider uppercase shadow-2xs">
             <PackageCheck className="w-3.5 h-3.5 text-[#C59B4B]" />
-            <span>On-The-Ground Operations in China</span>
+            <span>{t('goods.badge')}</span>
           </div>
 
           <h2 className="font-agency-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0A2240] tracking-tight leading-tight">
-            China Sourcing, Goods & Global Logistics
+            {t('goods.title')}
           </h2>
 
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-            Take a firsthand look at our sourcing operations across Zhejiang province—from bustling wholesale showrooms in Yiwu to factory floor quality checks, organized warehousing, and Ningbo container shipping.
+            {t('goods.subtitle')}
           </p>
         </div>
 

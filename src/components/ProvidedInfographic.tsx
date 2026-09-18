@@ -1,16 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface ProvidedInfographicProps {
   className?: string;
   onClick?: () => void;
 }
 
+const LOCAL_INFOGRAPHIC_URL = '/assets/user_ecosystem_infographic.png';
+const DRIVE_DIRECT_URL = 'https://lh3.googleusercontent.com/d/1R3WcugFvqVkcHXIEqcuTxdu-yRAcHbzU';
+
 /**
- * Exact, high-fidelity vector representation of the official A'S Worldwide Services
+ * Exact, high-fidelity representation of the official A'S Worldwide Services
  * comprehensive ecosystem poster provided by the user.
- * Displays all services, central AW globe emblem, logo typography, slogan, and 5 pillars.
+ * Displays the authentic image with vector SVG fallback.
  */
 export const ProvidedInfographic: React.FC<ProvidedInfographicProps> = ({ className = '', onClick }) => {
+  const [imgSrc, setImgSrc] = useState<string>(LOCAL_INFOGRAPHIC_URL);
+  const [imgError, setImgError] = useState(false);
+
+  const handleImageError = () => {
+    if (imgSrc === LOCAL_INFOGRAPHIC_URL) {
+      setImgSrc(DRIVE_DIRECT_URL);
+    } else {
+      setImgError(true);
+    }
+  };
+
+  if (!imgError) {
+    return (
+      <div 
+        className={`relative w-full h-full bg-white flex items-center justify-center select-none ${className}`}
+        onClick={onClick}
+      >
+        <img
+          src={imgSrc}
+          alt="A'S Worldwide Services Comprehensive Ecosystem"
+          referrerPolicy="no-referrer"
+          onError={handleImageError}
+          className="w-full h-full max-h-full object-contain"
+        />
+      </div>
+    );
+  }
+
   return (
     <div 
       className={`relative w-full h-full bg-white flex items-center justify-center select-none ${className}`}

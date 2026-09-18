@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { LanguageProvider } from './i18n/LanguageContext';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
@@ -38,64 +39,66 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF8F5] text-slate-800 selection:bg-[#C59B4B] selection:text-[#0A2240] antialiased">
-      {/* Navigation Bar */}
-      <Navbar onOpenInquiry={handleOpenInquiry} />
+    <LanguageProvider>
+      <div className="min-h-screen flex flex-col bg-[#FAF8F5] text-slate-800 selection:bg-[#C59B4B] selection:text-[#0A2240] antialiased">
+        {/* Navigation Bar */}
+        <Navbar onOpenInquiry={handleOpenInquiry} />
 
-      {/* Main Content */}
-      <main className="flex-1">
-        {/* 1. Hero & Official Carousel */}
-        <HeroSection
-          onSelectService={handleSelectServiceFromHero}
-          onOpenInquiry={handleOpenInquiry}
+        {/* Main Content */}
+        <main className="flex-1">
+          {/* 1. Hero & Official Carousel */}
+          <HeroSection
+            onSelectService={handleSelectServiceFromHero}
+            onOpenInquiry={handleOpenInquiry}
+          />
+
+          {/* 2. About Us / Story */}
+          <AboutSection />
+
+          {/* 3. Core Services Tracks */}
+          <ServicesSection
+            onOpenInquiry={handleOpenInquiry}
+            onViewCert={handleViewCert}
+          />
+
+          {/* 4. Goods, Factory Sourcing & Logistics Showcase */}
+          <GoodsShowcaseSection onOpenInquiry={handleOpenInquiry} />
+
+          {/* 5. Why Pick Us */}
+          <WhyPickUsSection />
+
+          {/* 6. Client Testimonials */}
+          <TestimonialsSection />
+
+          {/* 7. Frequently Asked Questions */}
+          <FaqSection />
+        </main>
+
+        {/* 6. Footer, Accreditations & Contact Details */}
+        <FooterSection
+          onSelectCertificate={(cert) => setSelectedCertificate(cert)}
+          onOpenInquiry={() => handleOpenInquiry()}
         />
 
-        {/* 2. About Us / Story */}
-        <AboutSection />
-
-        {/* 3. Core Services Tracks */}
-        <ServicesSection
-          onOpenInquiry={handleOpenInquiry}
-          onViewCert={handleViewCert}
+        {/* Interactive Certificate Lightbox Modal */}
+        <CertificateModal
+          certificate={selectedCertificate}
+          onClose={() => setSelectedCertificate(null)}
         />
 
-        {/* 4. Goods, Factory Sourcing & Logistics Showcase */}
-        <GoodsShowcaseSection onOpenInquiry={handleOpenInquiry} />
+        {/* Quick Consultation & Direct WhatsApp/Email Modal */}
+        <InquiryModal
+          isOpen={isInquiryOpen}
+          onClose={() => setIsInquiryOpen(false)}
+          defaultService={defaultInquiryService}
+        />
 
-        {/* 5. Why Pick Us */}
-        <WhyPickUsSection />
+        {/* Fixed Bottom Mobile Quick Bar for optimal responsive usability */}
+        <MobileQuickBar onOpenInquiry={() => handleOpenInquiry()} />
 
-        {/* 6. Client Testimonials */}
-        <TestimonialsSection />
-
-        {/* 7. Frequently Asked Questions */}
-        <FaqSection />
-      </main>
-
-      {/* 6. Footer, Accreditations & Contact Details */}
-      <FooterSection
-        onSelectCertificate={(cert) => setSelectedCertificate(cert)}
-        onOpenInquiry={() => handleOpenInquiry()}
-      />
-
-      {/* Interactive Certificate Lightbox Modal */}
-      <CertificateModal
-        certificate={selectedCertificate}
-        onClose={() => setSelectedCertificate(null)}
-      />
-
-      {/* Quick Consultation & Direct WhatsApp/Email Modal */}
-      <InquiryModal
-        isOpen={isInquiryOpen}
-        onClose={() => setIsInquiryOpen(false)}
-        defaultService={defaultInquiryService}
-      />
-
-      {/* Fixed Bottom Mobile Quick Bar for optimal responsive usability */}
-      <MobileQuickBar onOpenInquiry={() => handleOpenInquiry()} />
-
-      {/* Onscreen 'Let's Talk' and Automatic Back to Top Arrow */}
-      <FloatingActions onOpenInquiry={handleOpenInquiry} />
-    </div>
+        {/* Onscreen 'Let's Talk' and Automatic Back to Top Arrow */}
+        <FloatingActions onOpenInquiry={handleOpenInquiry} />
+      </div>
+    </LanguageProvider>
   );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLanguage } from '../i18n/LanguageContext';
 import {
   GraduationCap,
   Building2,
@@ -19,6 +20,7 @@ interface ServicesSectionProps {
 }
 
 export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry }) => {
+  const { t } = useLanguage();
   const services = [
     {
       id: 'study-abroad',
@@ -115,15 +117,15 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry 
         {/* Section Header - Ample, calm, dignified */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#C59B4B]/40 text-xs font-bold text-[#0A2240] tracking-wider uppercase">
-            <span>Our Core Services</span>
+            <span>{t('services.badge')}</span>
           </div>
 
           <h2 className="font-agency-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0A2240] tracking-tight leading-tight">
-            How We Support You in China
+            {t('services.title')}
           </h2>
 
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-            Whether for your higher education, your international supply chain, or your professional career, we provide genuine hands-on assistance every step of the way.
+            {t('services.subtitle')}
           </p>
         </div>
 
@@ -158,7 +160,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry 
                     onClick={() => onOpenInquiry(service.title)}
                     className="self-start sm:self-center inline-flex items-center gap-2 bg-[#FAF8F5] hover:bg-[#0A2240] text-[#0A2240] hover:text-white font-bold text-xs sm:text-sm px-4.5 py-2.5 rounded-xl border border-[#E8E2D5] hover:border-[#0A2240] transition-all cursor-pointer whitespace-nowrap"
                   >
-                    <span>Inquire About This</span>
+                    <span>{t('services.inquire')}</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>

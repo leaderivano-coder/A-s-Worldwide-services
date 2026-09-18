@@ -30,6 +30,8 @@ export const HeaderCarousel: React.FC<HeaderCarouselProps> = ({ onOpenInquiry, c
     {
       id: 'ecosystem-infographic',
       type: 'custom-infographic',
+      src: 'https://drive.google.com/file/d/1R3WcugFvqVkcHXIEqcuTxdu-yRAcHbzU/view?usp=drive_link',
+      alt: '',
       title: "A'S WorldWide SERVICES Ecosystem",
       subtitle: "Connecting People • Bridging Businesses • Delivering Opportunities",
       tag: "Official Comprehensive Ecosystem",

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { COMPANY_CONTACT } from '../data/companyData';
 import { BrandLogo } from './BrandLogo';
+import { LanguageToggle } from './LanguageToggle';
+import { useLanguage } from '../i18n/LanguageContext';
 import { MessageCircle, Mail, Menu, X, MapPin, Instagram, Facebook } from 'lucide-react';
 
 interface NavbarProps {
@@ -9,6 +11,7 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
@@ -25,12 +28,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2 text-slate-200">
             <MapPin className="w-3.5 h-3.5 text-[#C59B4B] shrink-0" />
-            <span className="font-medium tracking-wide">Hangzhou (Fuyang District), Zhejiang Province, China</span>
+            <span className="font-medium tracking-wide">{t('nav.location')}</span>
             <span className="hidden sm:inline text-slate-400">•</span>
-            <span className="hidden sm:inline text-[#E8D4A8] font-normal">Established in 2020</span>
+            <span className="hidden sm:inline text-[#E8D4A8] font-normal">{t('nav.established')}</span>
           </div>
 
-          <div className="flex items-center gap-4 sm:gap-5 text-xs">
+          <div className="flex items-center gap-3 sm:gap-5 text-xs">
             <a
               href={COMPANY_CONTACT.whatsappUrl}
               target="_blank"
@@ -38,7 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
               className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors font-medium"
             >
               <MessageCircle className="w-3.5 h-3.5" />
-              <span>WhatsApp:</span>
+              <span className="hidden xs:inline">{t('nav.whatsapp')}</span>
               <span className="font-bold text-white">{COMPANY_CONTACT.whatsapp}</span>
             </a>
 
@@ -50,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
               <span>{COMPANY_CONTACT.email}</span>
             </a>
 
-            <div className="hidden sm:flex items-center gap-2.5 border-l border-white/20 pl-3.5">
+            <div className="hidden sm:flex items-center gap-2 border-l border-white/20 pl-3">
               <a
                 href={COMPANY_CONTACT.instagramUrl}
                 target="_blank"
@@ -71,6 +74,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
               >
                 <Facebook className="w-3.5 h-3.5" />
               </a>
+            </div>
+
+            {/* Language Selector in Top Bar */}
+            <div className="border-l border-white/20 pl-2.5">
+              <LanguageToggle variant="topbar" />
             </div>
           </div>
         </div>
@@ -96,59 +104,61 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
             onClick={() => scrollToSection('about')}
             className="hover:text-[#0A2240] transition-colors py-1 cursor-pointer font-semibold"
           >
-            Our Story
+            {t('nav.story')}
           </button>
           <button
             onClick={() => scrollToSection('services')}
             className="hover:text-[#0A2240] transition-colors py-1 cursor-pointer font-semibold"
           >
-            What We Do
+            {t('nav.services')}
           </button>
           <button
             onClick={() => scrollToSection('goods-showcase')}
             className="hover:text-[#0A2240] transition-colors py-1 cursor-pointer font-semibold flex items-center gap-1.5 text-[#0A2240]"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#C59B4B]"></span>
-            <span>Goods &amp; Logistics</span>
+            <span>{t('nav.goodsLogistics')}</span>
           </button>
           <button
             onClick={() => scrollToSection('why-pick-us')}
             className="hover:text-[#0A2240] transition-colors py-1 cursor-pointer font-semibold"
           >
-            Why Choose Us
+            {t('nav.whyPickUs')}
           </button>
           <button
             onClick={() => scrollToSection('testimonials')}
             className="hover:text-[#0A2240] transition-colors py-1 cursor-pointer font-semibold"
           >
-            Student &amp; Client Stories
+            {t('nav.testimonials')}
           </button>
           <button
             onClick={() => scrollToSection('contact')}
             className="hover:text-[#0A2240] transition-colors py-1 cursor-pointer font-semibold"
           >
-            Contact &amp; Credentials
+            {t('nav.contact')}
           </button>
         </nav>
 
-        {/* Action Button */}
-        <div className="hidden sm:flex items-center gap-3">
+        {/* Desktop Language Toggle + Action Button */}
+        <div className="hidden sm:flex items-center gap-2.5">
+          <LanguageToggle variant="navbar" />
           <button
             onClick={() => onOpenInquiry()}
-            className="inline-flex items-center gap-2 bg-[#0A2240] hover:bg-[#06162B] text-white text-xs sm:text-sm font-bold px-4.5 py-2.5 rounded-xl border border-[#C59B4B]/50 shadow-xs hover:shadow-md transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 bg-[#0A2240] hover:bg-[#06162B] text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl border border-[#C59B4B]/50 shadow-xs hover:shadow-md transition-all cursor-pointer whitespace-nowrap"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Let's Talk</span>
+            <span>{t('nav.letsTalk')}</span>
           </button>
         </div>
 
         {/* Mobile menu toggle */}
         <div className="flex items-center gap-2 lg:hidden">
+          <LanguageToggle variant="topbar" className="sm:hidden" />
           <button
             onClick={() => onOpenInquiry()}
-            className="sm:hidden bg-[#0A2240] text-white text-xs font-bold px-3 py-1.5 rounded-md border border-[#C59B4B]/50"
+            className="sm:hidden bg-[#0A2240] text-white text-xs font-bold px-2.5 py-1.5 rounded-md border border-[#C59B4B]/50"
           >
-            Contact
+            {t('nav.letsTalk')}
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -163,42 +173,47 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
       {/* Mobile drop-down drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-[#E8E2D5] px-4 py-4 space-y-3 shadow-lg animate-in fade-in slide-in-from-top-2 duration-150">
+          {/* Mobile Language Selector */}
+          <div className="pb-3 border-b border-slate-100">
+            <LanguageToggle variant="mobile" />
+          </div>
+
           <button
             onClick={() => scrollToSection('about')}
             className="block w-full text-left py-2 px-3 rounded-md text-sm font-semibold text-slate-800 hover:bg-[#FAF8F5] hover:text-[#0A2240]"
           >
-            Our Story
+            {t('nav.story')}
           </button>
           <button
             onClick={() => scrollToSection('services')}
             className="block w-full text-left py-2 px-3 rounded-md text-sm font-semibold text-slate-800 hover:bg-[#FAF8F5] hover:text-[#0A2240]"
           >
-            What We Do
+            {t('nav.services')}
           </button>
           <button
             onClick={() => scrollToSection('goods-showcase')}
             className="block w-full text-left py-2 px-3 rounded-md text-sm font-semibold text-slate-800 hover:bg-[#FAF8F5] hover:text-[#0A2240] flex items-center justify-between"
           >
-            <span>Goods &amp; Logistics</span>
+            <span>{t('nav.goodsLogistics')}</span>
             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#0A2240] text-[#E8D4A8]">New</span>
           </button>
           <button
             onClick={() => scrollToSection('why-pick-us')}
             className="block w-full text-left py-2 px-3 rounded-md text-sm font-semibold text-slate-800 hover:bg-[#FAF8F5] hover:text-[#0A2240]"
           >
-            Why Choose Us
+            {t('nav.whyPickUs')}
           </button>
           <button
             onClick={() => scrollToSection('testimonials')}
             className="block w-full text-left py-2 px-3 rounded-md text-sm font-semibold text-slate-800 hover:bg-[#FAF8F5] hover:text-[#0A2240]"
           >
-            Student &amp; Client Stories
+            {t('nav.testimonials')}
           </button>
           <button
             onClick={() => scrollToSection('contact')}
             className="block w-full text-left py-2 px-3 rounded-md text-sm font-semibold text-slate-800 hover:bg-[#FAF8F5] hover:text-[#0A2240]"
           >
-            Contact &amp; Credentials
+            {t('nav.contact')}
           </button>
           <div className="pt-2 border-t border-slate-100 flex flex-col gap-2">
             <a
@@ -237,3 +252,4 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenInquiry }) => {
     </header>
   );
 };
+

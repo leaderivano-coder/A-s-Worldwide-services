@@ -1,6 +1,7 @@
 import React from 'react';
 import { CORE_BADGES, COMPANY_CONTACT } from '../data/companyData';
 import { HeaderCarousel } from './HeaderCarousel';
+import { useLanguage } from '../i18n/LanguageContext';
 import {
   Globe,
   Handshake,
@@ -20,6 +21,8 @@ interface HeroSectionProps {
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectService, onOpenInquiry }) => {
+  const { t } = useLanguage();
+
   const getBadgeIcon = (iconName: string) => {
     switch (iconName) {
       case 'Globe':
@@ -54,18 +57,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectService, onOpe
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#C59B4B]/40 shadow-2xs">
               <MapPin className="w-4 h-4 text-[#C59B4B]" />
               <span className="text-xs font-bold text-[#0A2240] tracking-wide">
-                Hangzhou, Zhejiang Province, China
+                {t('nav.location')}
               </span>
               <span className="text-slate-300">•</span>
               <span className="text-xs font-medium text-slate-600">
-                Operating since 2020
+                {t('nav.established')}
               </span>
             </div>
 
             {/* Main Headline */}
             <div className="space-y-3">
               <h1 className="font-agency-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0A2240] tracking-tight leading-[1.18]">
-                Your trusted, personal bridge to <span className="italic text-[#C59B4B] underline decoration-[#C59B4B]/40 decoration-4 underline-offset-4">China</span>.
+                {t('hero.titleLine1')}{' '}
+                <span className="italic text-[#C59B4B] underline decoration-[#C59B4B]/40 decoration-4 underline-offset-4">
+                  {t('hero.titleLine2')}
+                </span>
               </h1>
               
               <div className="text-xs sm:text-sm uppercase tracking-[0.18em] font-bold text-[#0A2240]/85">
@@ -75,22 +81,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectService, onOpe
 
             {/* Human Introduction - Warm, clear, easy to read international agency prose */}
             <p className="text-sm sm:text-base text-slate-700 leading-[1.7] max-w-xl mx-auto lg:mx-0 font-normal">
-              Whether you are an international student seeking university admissions and full scholarships, an entrepreneur sourcing quality products directly from Chinese manufacturers, or a professional securing a legal work permit — our team is physically on the ground in Hangzhou to guide you every step of the way.
+              {t('hero.subtitle')}
             </p>
 
             {/* Trust highlights */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1 text-left max-w-xl mx-auto lg:mx-0">
               <div className="flex items-center gap-2 text-xs font-semibold text-[#0A2240]">
                 <CheckCircle2 className="w-4 h-4 text-[#1E7E34] shrink-0" />
-                <span>On-Site Factory Visits</span>
+                <span>{t('hero.statsFactories')}</span>
               </div>
               <div className="flex items-center gap-2 text-xs font-semibold text-[#0A2240]">
                 <CheckCircle2 className="w-4 h-4 text-[#1E7E34] shrink-0" />
-                <span>Scholarship Placements</span>
+                <span>{t('hero.statsSuccess')}</span>
               </div>
               <div className="flex items-center gap-2 text-xs font-semibold text-[#0A2240]">
                 <CheckCircle2 className="w-4 h-4 text-[#1E7E34] shrink-0" />
-                <span>Direct Personal Care</span>
+                <span>{t('hero.statsLocal')}</span>
               </div>
             </div>
 
@@ -103,7 +109,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectService, onOpe
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#1E7E34] hover:bg-[#18682B] text-white font-bold text-sm px-5 py-3 rounded-xl shadow-sm hover:shadow-md transition-all"
               >
                 <MessageCircle className="w-4 h-4 text-white" />
-                <span>Chat on WhatsApp (+86 157 1574 5747)</span>
+                <span>{t('hero.ctaWhatsApp')}</span>
               </a>
 
               <button
@@ -113,7 +119,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectService, onOpe
                 }}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#0A2240] font-bold text-sm px-5 py-3 rounded-xl border border-[#C59B4B]/60 shadow-2xs hover:border-[#0A2240] transition-all cursor-pointer"
               >
-                <span>Explore Services</span>
+                <span>{t('hero.ctaConsult')}</span>
                 <ArrowRight className="w-4 h-4 text-[#C59B4B]" />
               </button>
             </div>
