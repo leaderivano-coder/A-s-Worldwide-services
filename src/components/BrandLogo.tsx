@@ -7,8 +7,8 @@ interface BrandLogoProps {
   showTagline?: boolean;
 }
 
-const USER_LOGO_URL = 'https://drive.google.com/uc?export=view&id=1tu5AJdXDISlsnsPp1J-WDzLMdC4dVPPf';
-
+const USER_LOGO_URL = 'https://drive.google.com/file/d/1ZXJR8oeR9vryUVZRRS4SQR1xPqSbtszJ/view?usp=drive_link';
+https://drive.google.com/file/d/1ZXJR8oeR9vryUVZRRS4SQR1xPqSbtszJ/view?usp=drive_link
 /**
  * High-fidelity representation of the official A'S WorldWide SERVICES emblem.
  * Uses the user-provided logo image link with graceful fallback to the vector emblem.
