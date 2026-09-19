@@ -139,11 +139,11 @@ export const GoodsShowcaseSection: React.FC<GoodsShowcaseSectionProps> = ({ onOp
   ];
 
   return (
-    <section id="goods-showcase" className="py-20 sm:py-28 bg-[#FAF8F5] border-b border-[#E8E2D5] relative">
+    <section id="goods-showcase" className="py-20 sm:py-28 bg-white relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#C59B4B]/40 text-xs font-bold text-[#0A2240] tracking-wider uppercase shadow-2xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF8F5] border border-[#C59B4B]/40 text-xs font-bold text-[#0A2240] tracking-wider uppercase shadow-2xs">
             <PackageCheck className="w-3.5 h-3.5 text-[#C59B4B]" />
             <span>{t('goods.badge')}</span>
           </div>
@@ -169,7 +169,7 @@ export const GoodsShowcaseSection: React.FC<GoodsShowcaseSectionProps> = ({ onOp
                 className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   isActive
                     ? 'bg-[#0A2240] text-[#E8D4A8] shadow-md border-2 border-[#C59B4B]'
-                    : 'bg-white text-slate-700 hover:bg-slate-100 border border-[#E8E2D5]'
+                    : 'bg-[#FAF8F5] text-slate-700 hover:bg-slate-200 border border-[#E8E2D5]'
                 }`}
               >
                 {cat.label}
@@ -178,12 +178,12 @@ export const GoodsShowcaseSection: React.FC<GoodsShowcaseSectionProps> = ({ onOp
           })}
         </div>
 
-        {/* Goods Gallery Grid */}
+        {/* Goods Gallery Grid with Sculpted Slanted Corners */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredItems.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-3xl border border-[#E8E2D5] overflow-hidden shadow-xs hover:shadow-xl hover:border-[#C59B4B]/60 transform transition-all duration-300 hover:scale-[1.015] will-change-transform flex flex-col group"
+              className="bg-[#FAF8F5] rounded-tl-[36px] rounded-br-[36px] rounded-tr-2xl rounded-bl-2xl border border-[#E8E2D5] overflow-hidden shadow-xs hover:shadow-xl hover:border-[#C59B4B]/60 transform transition-all duration-300 hover:scale-[1.015] will-change-transform flex flex-col group"
             >
               {/* Card Image Container with Hover Overlay */}
               <div

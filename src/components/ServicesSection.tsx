@@ -111,7 +111,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry 
   ];
 
   return (
-    <section id="services" className="py-20 sm:py-28 bg-[#FAF8F5] border-b border-[#E8E2D5]">
+    <section id="services" className="py-20 sm:py-28 bg-[#FAF8F5]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         
         {/* Section Header - Ample, calm, dignified */}
@@ -129,7 +129,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry 
           </p>
         </div>
 
-        {/* Ample, Uncrowded Service Cards */}
+        {/* Ample, Uncrowded Service Cards with Sculpted Slanted Corners */}
         <div className="space-y-10">
           {services.map((service, index) => {
             const IconComponent = service.icon;
@@ -137,12 +137,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenInquiry 
               <div
                 key={service.id}
                 id={`service-${service.id}`}
-                className="bg-white rounded-3xl p-7 sm:p-10 border border-[#E8E2D5] shadow-xs hover:shadow-xl hover:border-[#C59B4B]/60 transform transition-all duration-300 hover:scale-[1.015] will-change-transform space-y-7"
+                className="bg-white rounded-tl-[40px] rounded-br-[40px] rounded-tr-2xl rounded-bl-2xl p-7 sm:p-10 border border-[#E8E2D5] shadow-xs hover:shadow-xl hover:border-[#C59B4B]/60 transform transition-all duration-300 hover:scale-[1.012] will-change-transform space-y-7"
               >
                 {/* Card Top: Category, Icon & Title */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#FAF8F5] pb-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-[#0A2240] text-white flex items-center justify-center shrink-0 shadow-sm border border-[#C59B4B]/40">
+                    <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-tl-2xl rounded-br-2xl rounded-tr-lg rounded-bl-lg bg-[#0A2240] text-white flex items-center justify-center shrink-0 shadow-sm border border-[#C59B4B]/40">
                       <IconComponent className="w-7 h-7 text-[#C59B4B]" />
                     </div>
                     <div>

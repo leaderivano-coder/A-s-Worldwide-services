@@ -30,7 +30,7 @@ export const AboutSection: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-16 sm:py-24 bg-white border-b border-[#E8E2D5]">
+    <section id="about" className="py-16 sm:py-24 bg-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         
         {/* Section Header - Ample, calm, human */}
@@ -127,8 +127,8 @@ export const AboutSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Narrative Box with Warm Styling */}
-        <div className="bg-[#FAF8F5] rounded-3xl p-6 sm:p-10 border border-[#E8E2D5] shadow-sm space-y-8">
+        {/* Narrative Box with Warm Styling and Sculpted Non-Sharp Corners */}
+        <div className="bg-[#FAF8F5] rounded-tl-[36px] rounded-br-[36px] rounded-tr-2xl rounded-bl-2xl p-6 sm:p-10 border border-[#C59B4B]/30 shadow-sm space-y-8">
           
           <div className="space-y-6 text-slate-700 text-base sm:text-lg leading-[1.75] font-normal">
             <p>
@@ -143,7 +143,7 @@ export const AboutSection: React.FC = () => {
           {/* 3 Real Human Commitments */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-[#E8E2D5]">
             <div className="space-y-2">
-              <div className="w-10 h-10 rounded-xl bg-white border border-[#C59B4B] text-[#C59B4B] flex items-center justify-center shadow-2xs">
+              <div className="w-11 h-11 rounded-tl-2xl rounded-br-2xl rounded-tr-lg rounded-bl-lg bg-white border border-[#C59B4B] text-[#C59B4B] flex items-center justify-center shadow-2xs">
                 <MapPin className="w-5 h-5" />
               </div>
               <h3 className="font-bold text-[#0A2240] text-base font-agency-display">
@@ -155,7 +155,7 @@ export const AboutSection: React.FC = () => {
             </div>
 
             <div className="space-y-2">
-              <div className="w-10 h-10 rounded-xl bg-white border border-[#0A2240] text-[#0A2240] flex items-center justify-center shadow-2xs">
+              <div className="w-11 h-11 rounded-tl-2xl rounded-br-2xl rounded-tr-lg rounded-bl-lg bg-white border border-[#0A2240] text-[#0A2240] flex items-center justify-center shadow-2xs">
                 <Eye className="w-5 h-5" />
               </div>
               <h3 className="font-bold text-[#0A2240] text-base font-agency-display">
@@ -167,7 +167,7 @@ export const AboutSection: React.FC = () => {
             </div>
 
             <div className="space-y-2">
-              <div className="w-10 h-10 rounded-xl bg-white border border-[#1E7E34] text-[#1E7E34] flex items-center justify-center shadow-2xs">
+              <div className="w-11 h-11 rounded-tl-2xl rounded-br-2xl rounded-tr-lg rounded-bl-lg bg-white border border-[#1E7E34] text-[#1E7E34] flex items-center justify-center shadow-2xs">
                 <HeartHandshake className="w-5 h-5" />
               </div>
               <h3 className="font-bold text-[#0A2240] text-base font-agency-display">

@@ -4,12 +4,12 @@ import { Star, CheckCircle2 } from 'lucide-react';
 
 export const TestimonialsSection: React.FC = () => {
   return (
-    <section id="testimonials" className="py-20 sm:py-28 bg-[#FAF8F5] border-b border-[#E8E2D5]">
+    <section id="testimonials" className="py-20 sm:py-28 bg-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#C59B4B]/40 text-xs font-bold text-[#0A2240] tracking-wider uppercase">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF8F5] border border-[#C59B4B]/40 text-xs font-bold text-[#0A2240] tracking-wider uppercase">
             <span>Real Experiences</span>
           </div>
 
@@ -22,12 +22,12 @@ export const TestimonialsSection: React.FC = () => {
           </p>
         </div>
 
-        {/* 3 Ample, Grounded Cards */}
+        {/* 3 Ample, Grounded Cards with Sculpted Slanted Corners */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {TESTIMONIALS.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white rounded-3xl p-7 sm:p-8 border border-[#E8E2D5] shadow-2xs hover:shadow-sm transition-all flex flex-col justify-between space-y-6"
+              className="bg-[#FAF8F5] rounded-tl-[32px] rounded-br-[32px] rounded-tr-xl rounded-bl-xl p-7 sm:p-8 border border-[#E8E2D5] hover:border-[#C59B4B] shadow-2xs hover:shadow-md transition-all flex flex-col justify-between space-y-6"
             >
               <div className="space-y-4">
                 {/* 5 Warm Gold Stars */}

@@ -41,7 +41,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectService, onOpe
   };
 
   return (
-    <section id="home" className="relative bg-[#FAF8F5] pt-10 pb-16 sm:pt-14 sm:pb-24 border-b border-[#E8E2D5] overflow-hidden">
+    <section id="home" className="relative bg-[#FAF8F5] pt-10 pb-16 sm:pt-14 sm:pb-20 overflow-hidden">
       {/* Gentle background warmth */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-b from-[#EFE8DC]/60 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
 
@@ -147,7 +147,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectService, onOpe
             {CORE_BADGES.map((badge) => (
               <div
                 key={badge.id}
-                className="bg-white p-4 sm:p-5 rounded-2xl border border-[#E8E2D5] hover:border-[#C59B4B] transition-all shadow-2xs text-center flex flex-col items-center justify-center space-y-2 group"
+                className="bg-white p-4 sm:p-5 rounded-tl-2xl rounded-br-2xl rounded-tr-lg rounded-bl-lg border border-[#E8E2D5] hover:border-[#C59B4B] transition-all shadow-2xs text-center flex flex-col items-center justify-center space-y-2 group hover:shadow-md"
               >
                 <div className="w-11 h-11 rounded-full bg-[#FAF8F5] border border-[#E8E2D5] flex items-center justify-center group-hover:bg-white group-hover:border-[#C59B4B] transition-colors">
                   {getBadgeIcon(badge.icon)}

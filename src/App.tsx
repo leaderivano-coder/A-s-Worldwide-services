@@ -9,6 +9,7 @@ import { WhyPickUsSection } from './components/WhyPickUsSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { FaqSection } from './components/FaqSection';
 import { FooterSection } from './components/FooterSection';
+import { SlantedDivider } from './components/SlantedDivider';
 import { CertificateModal } from './components/CertificateModal';
 import { InquiryModal } from './components/InquiryModal';
 import { MobileQuickBar } from './components/MobileQuickBar';
@@ -44,7 +45,7 @@ export default function App() {
         {/* Navigation Bar */}
         <Navbar onOpenInquiry={handleOpenInquiry} />
 
-        {/* Main Content */}
+        {/* Main Content with Slanted, Dynamic Section Edges */}
         <main className="flex-1">
           {/* 1. Hero & Official Carousel */}
           <HeroSection
@@ -52,8 +53,14 @@ export default function App() {
             onOpenInquiry={handleOpenInquiry}
           />
 
+          {/* Slanted Transition into About */}
+          <SlantedDivider fromColor="#FAF8F5" toColor="#FFFFFF" direction="slanted-down" />
+
           {/* 2. About Us / Story */}
           <AboutSection />
+
+          {/* Slanted Transition into Services */}
+          <SlantedDivider fromColor="#FFFFFF" toColor="#FAF8F5" direction="slanted-up" />
 
           {/* 3. Core Services Tracks */}
           <ServicesSection
@@ -61,20 +68,35 @@ export default function App() {
             onViewCert={handleViewCert}
           />
 
+          {/* Slanted Transition into Goods Showcase */}
+          <SlantedDivider fromColor="#FAF8F5" toColor="#FFFFFF" direction="slanted-down" />
+
           {/* 4. Goods, Factory Sourcing & Logistics Showcase */}
           <GoodsShowcaseSection onOpenInquiry={handleOpenInquiry} />
+
+          {/* Slanted Transition into Why Pick Us */}
+          <SlantedDivider fromColor="#FFFFFF" toColor="#FAF8F5" direction="slanted-up" />
 
           {/* 5. Why Pick Us */}
           <WhyPickUsSection />
 
+          {/* Slanted Transition into Testimonials */}
+          <SlantedDivider fromColor="#FAF8F5" toColor="#FFFFFF" direction="slanted-down" />
+
           {/* 6. Client Testimonials */}
           <TestimonialsSection />
 
+          {/* Slanted Transition into FAQ */}
+          <SlantedDivider fromColor="#FFFFFF" toColor="#FAF8F5" direction="slanted-up" />
+
           {/* 7. Frequently Asked Questions */}
           <FaqSection />
+
+          {/* Slanted Transition into Deep Navy Footer */}
+          <SlantedDivider fromColor="#FAF8F5" toColor="#0A2240" direction="slanted-down" accentColor="#C59B4B" />
         </main>
 
-        {/* 6. Footer, Accreditations & Contact Details */}
+        {/* 8. Footer, Accreditations & Contact Details */}
         <FooterSection
           onSelectCertificate={(cert) => setSelectedCertificate(cert)}
           onOpenInquiry={() => handleOpenInquiry()}

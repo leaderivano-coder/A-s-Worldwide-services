@@ -38,7 +38,7 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-[#FAF8F5] border-b border-[#E8E2D5]">
+    <section id="faq" className="py-16 sm:py-24 bg-[#FAF8F5]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
@@ -54,14 +54,14 @@ export const FaqSection: React.FC = () => {
           </p>
         </div>
 
-        {/* FAQ Accordion List */}
+        {/* FAQ Accordion List with Sculpted Corners */}
         <div className="space-y-4">
           {FAQ_ITEMS.map((item, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={index}
-                className="bg-white rounded-2xl border border-[#E8E2D5] shadow-xs overflow-hidden transform transition-all duration-300 hover:scale-[1.015] hover:shadow-md hover:border-[#C59B4B]/60 will-change-transform"
+                className="bg-white rounded-tl-2xl rounded-br-2xl rounded-tr-lg rounded-bl-lg border border-[#E8E2D5] shadow-xs overflow-hidden transform transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:border-[#C59B4B]/60 will-change-transform"
               >
                 <button
                   type="button"

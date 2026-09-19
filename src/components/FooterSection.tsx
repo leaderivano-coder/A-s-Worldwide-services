@@ -35,7 +35,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
   };
 
   return (
-    <footer id="contact" className="bg-[#0A2240] text-white pt-16 pb-24 sm:pb-16 border-t-4 border-[#C59B4B]">
+    <footer id="contact" className="bg-[#0A2240] text-white pt-16 pb-24 sm:pb-16 relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Top Brand Banner */}
